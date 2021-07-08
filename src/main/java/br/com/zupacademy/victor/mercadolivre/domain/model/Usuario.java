@@ -23,7 +23,7 @@ public class Usuario {
 
 	@NotBlank
 	@Email
-	private String login;
+	private String email;
 	
 	@NotBlank
 	@Length(min = 6)
@@ -37,9 +37,17 @@ public class Usuario {
 	public Usuario() {
 	}
 
-	public Usuario(@NotBlank @Email String login, GeradorDeSenha senhaPura) {
-		this.login = login;
+	public Usuario(@NotBlank @Email String email, GeradorDeSenha senhaPura) {
+		this.email = email;
 		this.senha = senhaPura.criptografar();
+	}
+
+	public String getEmail() {
+		return email;
+	}
+	
+	public String getSenha() {
+		return senha;
 	}
 
 }

@@ -13,20 +13,20 @@ public class UsuarioRequest {
 
 	@NotBlank
 	@Email
-	@ValorUnico(nomeDoCampo = "login", classeDeDominio = Usuario.class)
-	private String login;
+	@ValorUnico(nomeDoCampo = "email", classeDeDominio = Usuario.class)
+	private String email;
 
 	@NotBlank
 	@Length(min = 6)
 	private String senha;
 
-	public UsuarioRequest(@NotBlank @Email String login, @NotBlank @Length(min = 6) String senha) {
-		this.login = login;
+	public UsuarioRequest(@NotBlank @Email String email, @NotBlank @Length(min = 6) String senha) {
+		this.email = email;
 		this.senha = senha;
 	}
 
 	public Usuario toModel() {
-		return new Usuario(login, new GeradorDeSenha(senha));
+		return new Usuario(email, new GeradorDeSenha(senha));
 	}
 
 }
