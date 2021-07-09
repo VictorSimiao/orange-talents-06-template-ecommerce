@@ -9,6 +9,10 @@ public class Problema {
 		this.campo = campo;
 		this.mensagemErro = mensagemErro;
 	}
+	
+	public Problema(String mensagemErro) {
+		this.mensagemErro = mensagemErro;
+	}
 
 	public String getCampo() {
 		return campo;
