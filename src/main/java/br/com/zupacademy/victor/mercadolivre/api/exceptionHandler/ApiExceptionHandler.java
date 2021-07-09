@@ -12,6 +12,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
@@ -44,6 +45,13 @@ public class ApiExceptionHandler {
 	@ExceptionHandler(IllegalArgumentException.class)
 	public ResponseEntity<?> handle(IllegalArgumentException exception) {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Problema(exception.getMessage()));
+	}
+	
+
+	@ExceptionHandler(ResponseStatusException.class)
+	public  ResponseEntity<?> handle(ResponseStatusException exception) {
+		return ResponseEntity.status(exception.getStatus()).body(new Problema(exception.getMessage()));
+
 	}
 
 }

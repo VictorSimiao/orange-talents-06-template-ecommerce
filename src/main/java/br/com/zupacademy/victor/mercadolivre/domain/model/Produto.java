@@ -64,6 +64,9 @@ public class Produto {
 	@PastOrPresent
 	private LocalDateTime cadastradoEm;
 
+	@OneToMany(mappedBy = "produto", cascade = CascadeType.MERGE)
+	private Set<ImagemProduto> imagens = new HashSet<ImagemProduto>();
+
 	@Deprecated
 	public Produto() {
 
@@ -85,6 +88,21 @@ public class Produto {
 		Assert.isTrue(this.caracteristicas.size() >= 3, "O produto precisa ter no mínimo três características");
 		Assert.isTrue(this.quantidade >= 0, "A quantide precisa ser maoir ou igual a 0");
 
+	}
+
+	public void associaImagens(Set<String> links) {
+		Set<ImagemProduto> imagens = links.stream().map(link -> new ImagemProduto(this, link))
+				.collect(Collectors.toSet());
+		this.imagens.addAll(imagens);
+	}
+	
+	
+	public Usuario getDono() {
+		return dono;
+	}
+
+	public boolean pertenceAoDono(Usuario possivelDono) {
+		return this.dono.equals(possivelDono);
 	}
 
 }
