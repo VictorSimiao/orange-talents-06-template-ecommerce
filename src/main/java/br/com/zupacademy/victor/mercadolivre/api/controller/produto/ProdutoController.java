@@ -1,4 +1,4 @@
-package br.com.zupacademy.victor.mercadolivre.api.controller;
+package br.com.zupacademy.victor.mercadolivre.api.controller.produto;
 
 import javax.validation.Valid;
 

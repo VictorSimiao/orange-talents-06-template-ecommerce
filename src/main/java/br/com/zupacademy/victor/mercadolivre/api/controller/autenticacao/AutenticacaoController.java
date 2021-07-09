@@ -1,4 +1,4 @@
-package br.com.zupacademy.victor.mercadolivre.api.controller;
+package br.com.zupacademy.victor.mercadolivre.api.controller.autenticacao;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
