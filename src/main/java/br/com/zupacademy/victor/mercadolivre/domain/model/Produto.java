@@ -102,8 +102,8 @@ public class Produto {
 	}
 	
 	
-	public Usuario getDono() {
-		return dono;
+	public String getEmailDono() {
+		return dono.getEmail();
 	}
 
 	public boolean pertenceAoDono(Usuario possivelDono) {
