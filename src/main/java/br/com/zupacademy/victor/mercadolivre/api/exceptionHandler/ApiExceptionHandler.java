@@ -44,13 +44,13 @@ public class ApiExceptionHandler {
 
 	@ExceptionHandler(IllegalArgumentException.class)
 	public ResponseEntity<?> handle(IllegalArgumentException exception) {
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Problema(exception.getMessage()));
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErroInternoApi(exception.getMessage()));
 	}
 	
 
 	@ExceptionHandler(ResponseStatusException.class)
 	public  ResponseEntity<?> handle(ResponseStatusException exception) {
-		return ResponseEntity.status(exception.getStatus()).body(new Problema(exception.getMessage()));
+		return ResponseEntity.status(exception.getStatus()).body(new ErroInternoApi(exception.getMessage()));
 
 	}
 

@@ -2,7 +2,9 @@ package br.com.zupacademy.victor.mercadolivre.domain.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -66,6 +68,9 @@ public class Produto {
 
 	@OneToMany(mappedBy = "produto", cascade = CascadeType.MERGE)
 	private Set<ImagemProduto> imagens = new HashSet<ImagemProduto>();
+	
+	@OneToMany(mappedBy = "produto", cascade = CascadeType.MERGE)
+	private List<Opiniao> opinioes = new ArrayList<Opiniao>();
 
 	@Deprecated
 	public Produto() {
@@ -104,5 +109,10 @@ public class Produto {
 	public boolean pertenceAoDono(Usuario possivelDono) {
 		return this.dono.equals(possivelDono);
 	}
+
+	public void adicionaOpiniao(Opiniao novaOpiniao) {
+		this.opinioes.add(novaOpiniao);
+	}
+
 
 }
