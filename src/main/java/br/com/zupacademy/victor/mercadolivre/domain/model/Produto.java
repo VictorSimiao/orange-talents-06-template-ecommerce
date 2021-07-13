@@ -68,9 +68,12 @@ public class Produto {
 
 	@OneToMany(mappedBy = "produto", cascade = CascadeType.MERGE)
 	private Set<ImagemProduto> imagens = new HashSet<ImagemProduto>();
-	
+
 	@OneToMany(mappedBy = "produto", cascade = CascadeType.MERGE)
 	private List<Opiniao> opinioes = new ArrayList<Opiniao>();
+
+	@OneToMany(mappedBy = "produto", cascade = CascadeType.MERGE)
+	private Set<Pergunta> peguntas = new HashSet<Pergunta>();
 
 	@Deprecated
 	public Produto() {
@@ -100,8 +103,7 @@ public class Produto {
 				.collect(Collectors.toSet());
 		this.imagens.addAll(imagens);
 	}
-	
-	
+
 	public String getEmailDono() {
 		return dono.getEmail();
 	}
@@ -114,5 +116,40 @@ public class Produto {
 		this.opinioes.add(novaOpiniao);
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public Set<CaracteristicaProduto> getCaracteristicas() {
+		return caracteristicas;
+	}
+
+	public Set<ImagemProduto> getImagens() {
+		return imagens;
+	}
+
+	public Set<Pergunta> getPeguntas() {
+		return peguntas;
+	}
+
+	public List<Opiniao> getOpinioes() {
+		return opinioes;
+	}
+
+	public Double getMedia() {
+		return this.opinioes.stream().mapToDouble(opiniao -> opiniao.getNota()).average().orElse(0);
+	}
+
+	public Long getTotalNotas() {
+		return this.opinioes.stream().mapToInt(opiniao -> opiniao.getNota()).count();
+	}
 
 }

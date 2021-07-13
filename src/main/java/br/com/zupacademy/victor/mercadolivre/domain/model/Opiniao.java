@@ -39,10 +39,10 @@ public class Opiniao {
 	@Valid
 	@ManyToOne
 	private Produto produto;
-	
+
 	@Deprecated
 	public Opiniao() {
-		
+
 	}
 
 	public Opiniao(@NotNull @Range(min = 1, max = 5) Integer nota, @NotBlank String titulo,
@@ -55,4 +55,15 @@ public class Opiniao {
 		this.produto = produto;
 	}
 
+	public Integer getNota() {
+		return nota;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
 }
