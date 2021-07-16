@@ -152,4 +152,13 @@ public class Produto {
 		return this.opinioes.stream().mapToInt(opiniao -> opiniao.getNota()).count();
 	}
 
+	public boolean abaterEstoque(int quantidade) {
+		Assert.isTrue(quantidade > 0, "Quantidade precisa ser maior que 0");
+		if (this.quantidade >= quantidade) {
+			this.quantidade -= quantidade;
+			return true;
+		}
+		return false;
+	}
+
 }

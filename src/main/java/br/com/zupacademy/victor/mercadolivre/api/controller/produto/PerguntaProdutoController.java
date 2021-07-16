@@ -38,8 +38,8 @@ public class PerguntaProdutoController {
 		return ResponseEntity.ok().build();
 	}
 
-	private void enviarEmail(Pergunta pergunta) {
+	private String enviarEmail(Pergunta pergunta) {
 		Email email = new Email(pergunta);
-		email.notificarDono();
+		return email.notificar();
 	}
 }

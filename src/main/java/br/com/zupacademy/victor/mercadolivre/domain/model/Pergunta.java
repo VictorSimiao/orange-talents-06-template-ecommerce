@@ -63,6 +63,10 @@ public class Pergunta {
 		return produto.getEmailDono();
 	}
 
+	public String getNomeProduto() {
+		return produto.getNome();
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -99,8 +103,5 @@ public class Pergunta {
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }

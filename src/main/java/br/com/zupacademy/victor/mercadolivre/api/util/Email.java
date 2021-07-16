@@ -1,24 +1,33 @@
 package br.com.zupacademy.victor.mercadolivre.api.util;
 
+import br.com.zupacademy.victor.mercadolivre.domain.model.Compra;
 import br.com.zupacademy.victor.mercadolivre.domain.model.Pergunta;
 
 public class Email {
-	
-	private String emailUsuarioRemetente;
-	private String titulo;
-	private String emailUsuarioDestinatario;
-	
+
+	private String emailUsuario;
+	private String mensagem;
+	private String emailDonoProduto;
+	private String nomeProduto;
+
 	public Email(Pergunta pergunta) {
-		this.emailUsuarioRemetente = pergunta.getEmailUsuario();
-		this.titulo = pergunta.getTitulo();
-		this.emailUsuarioDestinatario = pergunta.getEmailDonoProduto();
+		this.emailUsuario = pergunta.getEmailUsuario();
+		this.mensagem = pergunta.getTitulo();
+		this.emailDonoProduto = pergunta.getEmailDonoProduto();
+		this.nomeProduto = pergunta.getNomeProduto();
 	}
-	
-	public void notificarDono() {
-		System.out.println("Enviando e-mail....");
-		System.out.println("Enviado por: "+this.emailUsuarioRemetente);
-		System.out.println("Assunto: "+this.titulo);
-		System.out.println("Destinatário: "+this.emailUsuarioDestinatario);
+
+	public Email(Compra compra, String informacao) {
+		this.emailUsuario = compra.getEmailComprador();
+		this.mensagem = informacao;
+		this.nomeProduto = compra.getNomeProduto();
+		this.emailDonoProduto = compra.getEmailVendedor();
 	}
-	
+
+	public  String notificar() {
+		String mensagem = "Enviado por: " + this.emailUsuario + "\n" + "Sobre o Produto: " + this.nomeProduto + "\n"
+				+ "Mensagem: " + this.mensagem + "\n" + "Destinatário: " + this.emailDonoProduto;
+		return mensagem;
+	}
+
 }
