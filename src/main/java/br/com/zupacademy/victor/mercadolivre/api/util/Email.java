@@ -24,10 +24,22 @@ public class Email {
 		this.emailDonoProduto = compra.getEmailVendedor();
 	}
 
+	
+
 	public  String notificar() {
 		String mensagem = "Enviado por: " + this.emailUsuario + "\n" + "Sobre o Produto: " + this.nomeProduto + "\n"
 				+ "Mensagem: " + this.mensagem + "\n" + "Destinatário: " + this.emailDonoProduto;
 		return mensagem;
 	}
-
+	
+	public String notificacaoCompraSucesso() {
+		String mensagem = "Sobre o Produto: " + this.nomeProduto + "\n"
+				+ "Mensagem: " + this.mensagem + "\n" + "Enviado por: " + this.emailDonoProduto;
+		return mensagem;
+	}
+	public String notificacaoFalhaCompra() {
+		String mensagem = "Sobre o Produto: " + this.nomeProduto + "\n"
+				+ "Mensagem: " + this.mensagem + "\n" + "Enviado por: " + this.emailDonoProduto;
+		return mensagem;
+	}
 }

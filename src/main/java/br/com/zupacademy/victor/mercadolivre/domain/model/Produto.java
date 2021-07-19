@@ -108,6 +108,10 @@ public class Produto {
 		return dono.getEmail();
 	}
 
+	public Integer getIdDono() {
+		return dono.getId();
+	}
+
 	public boolean pertenceAoDono(Usuario possivelDono) {
 		return this.dono.equals(possivelDono);
 	}

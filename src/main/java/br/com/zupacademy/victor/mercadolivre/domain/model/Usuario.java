@@ -24,11 +24,11 @@ public class Usuario {
 	@NotBlank
 	@Email
 	private String email;
-	
+
 	@NotBlank
 	@Length(min = 6)
 	private String senha;
-	
+
 	@CreationTimestamp
 	@PastOrPresent
 	private LocalDateTime momentoCadastro;
@@ -42,10 +42,14 @@ public class Usuario {
 		this.senha = senhaPura.criptografar();
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public String getSenha() {
 		return senha;
 	}

@@ -1,8 +1,8 @@
 package br.com.zupacademy.victor.mercadolivre.domain.model;
 
 public enum GatewayPagamento {
-	PAGSEGURO("https://pagseguro.com?returnId=%s&redirectUrl=http://localhost:8080/retorno-pagseguro/%s"),
-	PAYPAL("https://paypal.com?buyerId=%s&redirectUrl=http://localhost:8080/retorno-paypal/%s");
+	PAGSEGURO("https://pagseguro.com?returnId=%s&redirectUrl=http://localhost:8080/api/retorno-pagseguro/%s"),
+	PAYPAL("https://paypal.com?buyerId=%s&redirectUrl=http://localhost:8080/api/retorno-paypal/%s");
 	
 	String url;
 	
